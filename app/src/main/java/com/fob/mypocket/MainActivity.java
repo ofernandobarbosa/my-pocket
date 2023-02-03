@@ -93,7 +93,11 @@ public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
         if (result.getContents() != null) {
             seFazUri = result.getContents();
-
+            try {
+                requestNfe(seFazUri);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         }
     });
 
