@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Pocket</string>
+    <string name="qr_code_description">Qr code</string>
+    <string name="link_inicio">início</string>
+    <string name="link_investimentos">investimentos</string>
+    <string name="link_carteira">carteira</string>
+    <string name="link_notificacoes">notificações</string>
+</resources>
