@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private String seFazUri;
 
     public Nfe nfe;
+
+    private RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void components() {
         qrImage = findViewById(R.id.qr_image);
+        queue = Volley.newRequestQueue(this);
     }
 
     private void scanCode() {
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void requestNfe(String uri) throws JSONException {
         JSONObject body = new JSONObject();
-        body.put("name", uri);
+        body.put("url", uri);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
                 (Request.Method.POST,
@@ -78,7 +83,11 @@ public class MainActivity extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-                                showAlert(response.toString());
+                                try {
+                                    showAlert(response.getJSONArray("produtos").getJSONArray(0).toString());
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
                             }
                         },
                         new Response.ErrorListener() {
@@ -88,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
+        queue.add(jsonObjectRequest);
     }
 
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
