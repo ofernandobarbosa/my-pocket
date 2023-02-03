@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private void showAlert(String s) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Result");
-        builder.setMessage(seFazUri);
+        builder.setMessage(s);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
