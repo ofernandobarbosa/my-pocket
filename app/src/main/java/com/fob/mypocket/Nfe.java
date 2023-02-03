@@ -11,11 +11,19 @@ public class Nfe {
         this.nfe = nfe;
     }
 
-    public JSONObject getProducts() throws JSONException {
-        JSONArray arrayProducts = getArrayProducts();
-        return arrayProducts.getJSONObject(0);
+    public JSONArray getProducts() throws JSONException {
+        JSONArray arrayProducts = nfe.getJSONArray("produtos");
+        JSONArray productNames = new JSONArray();
+        for (int i = 0; i < arrayProducts.length(); i++) {
+            productNames.put(arrayProducts.getJSONObject(i).getString("descricao"));
+        }
+        return productNames;
     }
-    private JSONArray getArrayProducts() throws JSONException{
-        return nfe.getJSONArray("produtos");
+
+    public String getTotalValue() throws JSONException{
+        JSONObject cabecalho = nfe.getJSONObject("cabecalho");
+        String totalValue = cabecalho.getString("total");
+        return totalValue;
     }
+
 }
