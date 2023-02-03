@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 
 import com.android.volley.Request;
@@ -18,8 +19,11 @@ import com.android.volley.toolbox.Volley;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,10 +64,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showAlert(String s) {
+    private void showAlert(JSONArray s) throws JSONException {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Result");
-        builder.setMessage(s);
+        StringBuilder messages = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            messages.append(s.getString(i)).append("\n");
+        }
+        builder.setMessage(messages);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        }).show();
+    }
+
+    private void showAlertTotalValue(String c) throws JSONException {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Result");
+        StringBuilder messages = new StringBuilder();
+
+        messages.append("O valor total gasto foi de R$").append(c);
+
+        builder.setMessage(messages);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        }).show();
+    }
+    private void showAnyAlert(String c) throws JSONException {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Result");
+        builder.setMessage(c);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -83,8 +119,9 @@ public class MainActivity extends AppCompatActivity {
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
+                                nfe = new Nfe(response);
                                 try {
-                                    showAlert(response.getJSONArray("produtos").getJSONArray(0).toString());
+                                    showAlertTotalValue(nfe.getTotalValue());
                                 } catch (JSONException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -103,10 +140,19 @@ public class MainActivity extends AppCompatActivity {
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
         if (result.getContents() != null) {
             seFazUri = result.getContents();
-            try {
-                requestNfe(seFazUri);
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
+
+            if (seFazUri.contains("https://")) {
+                try {
+                    requestNfe(seFazUri);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }else {
+                try {
+                    showAnyAlert("QR CODE INVÁLIDO \n Leia um QR Code válido!");
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
     });
