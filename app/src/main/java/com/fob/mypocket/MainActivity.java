@@ -9,13 +9,21 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.ImageButton;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton qrImage;
     private String seFazUri;
+
     public Nfe nfe;
 
     @Override
@@ -33,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void components(){
+    private void components() {
         qrImage = findViewById(R.id.qr_image);
     }
 
@@ -47,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void showAlert(){
+    private void showAlert(String s) {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Result");
         builder.setMessage(seFazUri);
@@ -59,10 +67,33 @@ public class MainActivity extends AppCompatActivity {
         }).show();
     }
 
+    private void requestNfe(String uri) throws JSONException {
+        JSONObject body = new JSONObject();
+        body.put("name", uri);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
+                (Request.Method.POST,
+                        U.BASE_URL,
+                        body,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                showAlert(response.toString());
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // TODO: Handle error
+
+                            }
+                        });
+    }
+
     ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result -> {
         if (result.getContents() != null) {
             seFazUri = result.getContents();
-            showAlert();
+
         }
     });
 

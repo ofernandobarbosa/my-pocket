@@ -39,5 +39,5 @@ dependencies {
     /* Third part dependencies */
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
     implementation 'com.google.android.material:material:1.9.0-alpha01'
-    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
+    implementation 'com.android.volley:volley:1.2.1'
 }
