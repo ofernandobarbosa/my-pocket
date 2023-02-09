@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
+    <!--  Scroll Body  -->
     <ScrollView
         android:id="@+id/scrollView4"
         android:layout_width="0dp"
@@ -23,6 +23,8 @@
             android:layout_height="wrap_content"
             android:paddingBottom="10sp">
 
+        <!-- Header -->
+            <!-- background -->
             <View
                 android:id="@+id/bg_header"
                 android:layout_width="0dp"
@@ -36,7 +38,18 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
+            <!-- Menu -->
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/button_menu" />
+            <!-- Welcome -->
             <TextView
                 android:id="@+id/tx_wellcome"
                 android:layout_width="wrap_content"
@@ -49,29 +62,6 @@
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="24dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_avatar"
-                app:layout_constraintBottom_toTopOf="@+id/cv_balance"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/button_menu" />
-
             <TextView
                 android:id="@+id/tx_user_name"
                 android:layout_width="wrap_content"
@@ -84,7 +74,17 @@
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tx_wellcome"
                 app:layout_constraintTop_toBottomOf="@+id/tx_wellcome" />
-
+            <!-- Avatar Image -->
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="24dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_avatar"
+                app:layout_constraintBottom_toTopOf="@+id/cv_balance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
             <!-- card balance -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_balance"
@@ -222,7 +222,6 @@
 
             </androidx.cardview.widget.CardView>
             <!-- card pillars -->
-            <!-- card expenses -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_pillars"
                 android:layout_width="0dp"
@@ -406,7 +405,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
-
+            <!-- card expenses -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_expenses"
                 android:layout_width="0dp"
@@ -637,12 +636,11 @@
 
             </androidx.cardview.widget.CardView>
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </ScrollView>
 
+    <!-- Bottom Menu -->
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
@@ -666,8 +664,7 @@
             app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
-
-
+    <!-- Floating Button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/qr_image"
         android:layout_width="wrap_content"
@@ -679,7 +676,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottomAppBar" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
