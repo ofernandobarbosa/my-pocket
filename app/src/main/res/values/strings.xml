@@ -5,4 +5,20 @@
     <string name="link_investimentos">investimentos</string>
     <string name="link_carteira">carteira</string>
     <string name="link_notificacoes">notificações</string>
+    <string name="user_name">Fernando Barbosa</string>
+    <string name="wellcome">Olá,</string>
+    <string name="tx_balance">balanço geral</string>
+    <string name="tx_pillars">pilares</string>
+    <string name="tx_expenses">despesas</string>
+    <string name="tx_food">alimentação</string>
+    <string name="tx_alimentacao_value_available">R$ 1.234,99</string>
+    <string name="tx_alimentacao_value_expent">R$ 1.234,99</string>
+    <string name="balance_available_description">disponível</string>
+    <string name="balance_available_value">R$ 190.234,99</string>
+    <string name="balance_expense_description">despesas</string>
+    <string name="balance_expense_value">R$ 190.234,99</string>
+    <string name="balance_revenue_description">receitas</string>
+    <string name="balance_revenue_value">R$ 190.234,99</string>
+    <string name="balance_investment_description">investimentos</string>
+    <string name="balance_investment_value">R$ 190.234,99</string>
 </resources>
