@@ -1,4 +1,4 @@
-package com.fob.mypocket;
+package com.fob.mypocket.utils;
 
 public class U {
 

@@ -1,13 +1,14 @@
-package com.fob.mypocket;
+package com.fob.mypocket.activity;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 
 import com.android.volley.Request;
@@ -16,6 +17,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.fob.mypocket.utils.CaptureAct;
+import com.fob.mypocket.model.Nfe;
+import com.fob.mypocket.R;
+import com.fob.mypocket.utils.U;
+import com.fob.mypocket.adapter.AdapterExpenses;
+import com.fob.mypocket.model.Expense;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -23,10 +30,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RecyclerView recyclerViewExpenses;
+    private List<Expense> expenseList = new ArrayList<>();
     private ImageButton qrImage;
     private String seFazUri;
 
@@ -41,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        recyclerExpenses();
+
         components();
 
         qrImage.setOnClickListener(v ->
@@ -52,6 +64,64 @@ public class MainActivity extends AppCompatActivity {
     private void components() {
         qrImage = findViewById(R.id.qr_image);
         queue = Volley.newRequestQueue(this);
+    }
+
+    private void recyclerExpenses(){
+        recyclerViewExpenses = findViewById(R.id.recyclerViewExpenses);
+
+        //Listar gastos
+        this.createExpense();
+
+        //Configurar adapter
+        AdapterExpenses adapter = new AdapterExpenses( expenseList );
+
+        //Configurar Recyclerview
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerViewExpenses.setLayoutManager(layoutManager);
+        recyclerViewExpenses.setHasFixedSize(true);
+        recyclerViewExpenses.setAdapter( adapter );
+    }
+
+    public void createExpense(){
+
+        Expense expense = new Expense("Jun", "26", "Stock Center", "Supermercado", "Dinheiro", R.drawable.ic_dim, "À vista", "R$394,20");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "27", "Condomínio", "Moradia", "PicPay", R.drawable.ic_picpay,  "À vista", "R$280,00");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "27", "Dog do Alemão", "Regalia", "Nubank", R.drawable.ic_nubank, "1x", "R$39,20");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "28", "Gasolina", "Gasolina", "Samsung", R.drawable.ic_samsung, "1x", "R$100,00");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "28", "Ceee", "Moradia", "PicPay", R.drawable.ic_picpay, "À vista", "R$132,20");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "27", "Condomínio", "Moradia", "PicPay", R.drawable.ic_picpay,  "À vista", "R$280,00");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "27", "Dog do Alemão", "Regalia", "Nubank", R.drawable.ic_nubank, "1x", "R$39,20");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "28", "Gasolina", "Gasolina", "Samsung", R.drawable.ic_samsung, "1x", "R$100,00");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "28", "Ceee", "Moradia", "PicPay", R.drawable.ic_picpay, "À vista", "R$132,20");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "27", "Condomínio", "Moradia", "PicPay", R.drawable.ic_picpay,  "À vista", "R$280,00");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "27", "Dog do Alemão", "Regalia", "Nubank", R.drawable.ic_nubank, "1x", "R$39,20");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "28", "Gasolina", "Gasolina", "Samsung", R.drawable.ic_samsung, "1x", "R$100,00");
+        this.expenseList.add(expense);
+
+        expense = new Expense("Jun", "28", "Ceee", "Moradia", "PicPay", R.drawable.ic_picpay, "À vista", "R$132,20");
+        this.expenseList.add(expense);
     }
 
     private void scanCode() {
@@ -131,7 +201,11 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 // TODO: Handle error
-
+                                try {
+                                    showAnyAlert("Erro na Leitura do QR Code " + error.toString());
+                                } catch (JSONException ex) {
+                                    throw new RuntimeException(ex);
+                                }
                             }
                         });
         queue.add(jsonObjectRequest);

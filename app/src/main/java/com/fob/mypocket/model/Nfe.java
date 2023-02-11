@@ -1,4 +1,4 @@
-package com.fob.mypocket;
+package com.fob.mypocket.model;
 
 import org.json.JSONArray;
 import org.json.JSONException;

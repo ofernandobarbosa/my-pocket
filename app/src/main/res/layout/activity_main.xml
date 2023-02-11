@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <!--  Scroll Body  -->
     <ScrollView
@@ -21,9 +21,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:paddingBottom="10sp">
 
-        <!-- Header -->
+            <!-- Header -->
             <!-- background -->
             <View
                 android:id="@+id/bg_header"
@@ -62,6 +63,7 @@
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/tx_user_name"
                 android:layout_width="wrap_content"
@@ -85,556 +87,814 @@
                 app:layout_constraintBottom_toTopOf="@+id/cv_balance"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <!-- card balance -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_balance"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="-46dp"
-                android:layout_marginEnd="12dp"
-                android:background="@color/white"
-                app:cardCornerRadius="20dp"
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:layout_marginTop="-48dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bg_header">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <!-- card balance -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_balance"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/white"
+                    app:cardCornerRadius="20dp">
 
-                    <TextView
-                        android:id="@+id/tv_balance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/tx_balance"
-                        android:textSize="14sp"
-                        android:typeface="normal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/img_filter_balance"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_balance"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_filter" />
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/inter_extralight"
-                        android:text="@string/balance_available_description"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toTopOf="@+id/textView7"
-                        app:layout_constraintStart_toStartOf="@+id/textView7"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_balance"
-                        app:layout_constraintVertical_chainStyle="packed" />
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="24dp"
-                        android:fontFamily="@font/inter_bold"
-                        android:text="@string/balance_available_value"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_marginBottom="12dp"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_balance">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/textView8"
-                            android:layout_width="match_parent"
+                            android:id="@+id/tv_balance"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/inter"
+                            android:text="@string/tx_balance"
+                            android:textSize="14sp"
+                            android:typeface="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_filter_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="12dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_balance"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_filter" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:fontFamily="@font/inter_extralight"
+                            android:text="@string/balance_available_description"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toTopOf="@+id/textView7"
+                            app:layout_constraintStart_toEndOf="@+id/imageView3"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_balance"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
                             android:fontFamily="@font/inter_bold"
-                            android:text="@string/balance_expense_description"
-                            android:textAlignment="viewEnd"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/textView13"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/balance_investment_value"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/textView10"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/inter_bold"
-                            android:text="@string/balance_revenue_description"
-                            android:textAlignment="viewEnd"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/balance_expense_value"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/textView12"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:fontFamily="@font/inter_bold"
-                            android:text="@string/balance_investment_description"
-                            android:textAlignment="viewEnd"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:id="@+id/textView11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/balance_revenue_value"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-            <!-- card pillars -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_pillars"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:background="@color/white"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_balance">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/tv_pillars"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/tx_pillars"
-                        android:textSize="14sp"
-                        android:typeface="normal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/img_filter_pillars"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_pillars"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_filter" />
-
-                    <HorizontalScrollView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_pillars"
-                        app:layout_constraintVertical_bias="0.0">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/cardView2"
-                                android:layout_width="160dp"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="8dp"
-                                android:clickable="true"
-                                app:cardCornerRadius="5dp"
-                                app:cardElevation="1dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                android:focusable="true">
-
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent">
-
-                                    <TextView
-                                        android:id="@+id/tv_food"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:fontFamily="@font/inter"
-                                        android:text="@string/tx_food"
-                                        android:textSize="14sp"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <ImageView
-                                        android:id="@+id/img_food"
-                                        android:layout_width="0dp"
-                                        android:layout_height="100dp"
-                                        android:layout_marginTop="8dp"
-                                        android:scaleType="centerCrop"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/tv_food"
-                                        app:srcCompat="@drawable/img_food_example" />
-
-                                    <ImageView
-                                        android:id="@+id/iv_status_available_value_food"
-                                        android:layout_width="24dp"
-                                        android:layout_height="0dp"
-                                        android:scaleType="centerCrop"
-                                        app:layout_constraintBottom_toBottomOf="@+id/tv_available_value"
-                                        app:layout_constraintEnd_toStartOf="@+id/tv_available_value"
-                                        app:layout_constraintHorizontal_bias="0.5"
-                                        app:layout_constraintHorizontal_chainStyle="packed"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="@+id/tv_available_value"
-                                        app:srcCompat="@drawable/ic_arrow_available" />
-
-                                    <TextView
-                                        android:id="@+id/tv_available_value"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="8dp"
-                                        android:fontFamily="@font/inter"
-                                        android:text="@string/tx_alimentacao_value_available"
-                                        android:textSize="12sp"
-                                        app:layout_constraintBottom_toTopOf="@+id/tv_expend_value"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintHorizontal_bias="0.5"
-                                        app:layout_constraintStart_toEndOf="@+id/iv_status_available_value_food"
-                                        app:layout_constraintTop_toBottomOf="@+id/img_food" />
-
-                                    <TextView
-                                        android:id="@+id/tv_expend_value"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="4dp"
-                                        android:layout_marginBottom="8dp"
-                                        android:fontFamily="@font/inter"
-                                        android:text="@string/tx_alimentacao_value_expent"
-                                        android:textSize="12sp"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintHorizontal_bias="0.5"
-                                        app:layout_constraintStart_toEndOf="@+id/iv_status_expent_value_food"
-                                        app:layout_constraintTop_toBottomOf="@+id/tv_available_value" />
-
-                                    <ImageView
-                                        android:id="@+id/iv_status_expent_value_food"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="0dp"
-                                        android:scaleType="centerCrop"
-                                        app:layout_constraintBottom_toBottomOf="@+id/tv_expend_value"
-                                        app:layout_constraintEnd_toStartOf="@+id/tv_expend_value"
-                                        app:layout_constraintHorizontal_bias="0.5"
-                                        app:layout_constraintHorizontal_chainStyle="packed"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="@+id/tv_expend_value"
-                                        app:srcCompat="@drawable/ic_arrow_expent" />
-
-                                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/cardView3"
-                                android:layout_width="160dp"
-                                android:layout_height="170dp"
-                                android:layout_margin="8dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/cardView2"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                            </androidx.cardview.widget.CardView>
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="160dp"
-                                android:layout_height="170dp"
-                                android:layout_margin="8dp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/cardView3"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                            </androidx.cardview.widget.CardView>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    </HorizontalScrollView>
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-            <!-- card expenses -->
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cv_expenses"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:background="@color/white"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cv_pillars">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/tv_expenses"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/inter"
-                        android:text="@string/tx_expenses"
-                        android:textSize="14sp"
-                        android:typeface="normal"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/img_filter_expenses"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_expenses"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/ic_filter" />
-
-                    <androidx.core.widget.NestedScrollView
-                        android:id="@+id/scrollView2"
-                        android:layout_width="0dp"
-                        android:layout_height="220dp"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_expenses">
+                            android:text="@string/balance_available_value"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="150dp"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="24dp"
+                            android:layout_marginBottom="12dp"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_balance">
 
-                            <androidx.cardview.widget.CardView
+                            <TextView
+                                android:id="@+id/textView8"
                                 android:layout_width="match_parent"
-                                android:layout_height="55dp"
-                                android:layout_marginStart="12dp"
-                                android:layout_marginEnd="12dp"
-                                android:layout_marginBottom="8dp"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="1dp">
-                                <androidx.constraintlayout.widget.ConstraintLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal">
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="@string/balance_expense_description"
+                                android:textAlignment="textEnd"
+                                android:textSize="14sp" />
 
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="0dp"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent">
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/balance_investment_value"
+                                android:textAlignment="textEnd"
+                                android:textSize="16sp" />
 
-                                        <TextView
-                                            android:id="@+id/textView14"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginEnd="8dp"
-                                            android:fontFamily="@font/inter_extralight"
-                                            android:text="12x"
-                                            android:textSize="12sp"
-                                            app:layout_constraintBottom_toTopOf="@+id/textView15"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintVertical_chainStyle="packed" />
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="@string/balance_revenue_description"
+                                android:textAlignment="viewEnd"
+                                android:textSize="14sp" />
 
-                                        <TextView
-                                            android:id="@+id/textView15"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginEnd="8dp"
-                                            android:gravity="fill"
-                                            android:text="R$9.999,99"
-                                            android:textColor="@color/clicked"
-                                            android:textSize="16sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintEnd_toEndOf="parent"
-                                            app:layout_constraintTop_toBottomOf="@+id/textView14" />
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/balance_expense_value"
+                                android:textAlignment="viewEnd"
+                                android:textSize="16sp" />
 
-                                    <androidx.cardview.widget.CardView
-                                        android:id="@+id/cardView4"
-                                        android:layout_width="42dp"
-                                        android:layout_height="55dp"
-                                        android:backgroundTint="#EEEEEE"
-                                        app:cardCornerRadius="10dp"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent">
+                            <TextView
+                                android:id="@+id/textView12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/inter_bold"
+                                android:text="@string/balance_investment_description"
+                                android:textAlignment="viewEnd"
+                                android:textSize="14sp" />
 
-                                        <androidx.constraintlayout.widget.ConstraintLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="match_parent"
-                                            android:orientation="vertical">
-
-                                            <TextView
-                                                android:id="@+id/textView4"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:fontFamily="@font/inter_light"
-                                                android:text="Ago"
-                                                app:layout_constraintBottom_toTopOf="@+id/textView5"
-                                                app:layout_constraintEnd_toEndOf="parent"
-                                                app:layout_constraintStart_toStartOf="parent"
-                                                app:layout_constraintTop_toTopOf="parent"
-                                                app:layout_constraintVertical_chainStyle="packed" />
-
-                                            <TextView
-                                                android:id="@+id/textView5"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:fontFamily="@font/inter_bold"
-                                                android:text="20"
-                                                android:textSize="24sp"
-                                                app:layout_constraintBottom_toBottomOf="parent"
-                                                app:layout_constraintEnd_toEndOf="parent"
-                                                app:layout_constraintStart_toStartOf="parent"
-                                                app:layout_constraintTop_toBottomOf="@+id/textView4" />
-                                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                    </androidx.cardview.widget.CardView>
-
-                                    <androidx.constraintlayout.widget.ConstraintLayout
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginStart="8dp"
-                                        android:orientation="vertical"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintStart_toEndOf="@+id/cardView4"
-                                        app:layout_constraintTop_toTopOf="parent"
-                                        app:layout_constraintVertical_bias="0.0">
-
-                                        <TextView
-                                            android:id="@+id/textView2"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="MercadoLive*Carburgov"
-                                            android:textSize="14sp"
-                                            app:layout_constraintBottom_toTopOf="@+id/textView"
-                                            app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            app:layout_constraintVertical_chainStyle="spread" />
-
-                                        <TextView
-                                            android:id="@+id/textView"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="Manutenção"
-                                            android:textSize="14sp"
-                                            app:layout_constraintBottom_toTopOf="@+id/textView3"
-                                            app:layout_constraintStart_toStartOf="@+id/textView2"
-                                            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-                                        <androidx.cardview.widget.CardView
-                                            android:id="@+id/cardView"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            app:cardCornerRadius="3dp"
-                                            app:layout_constraintBottom_toBottomOf="@+id/textView3"
-                                            app:layout_constraintStart_toStartOf="@+id/textView"
-                                            app:layout_constraintTop_toTopOf="@+id/textView3">
-
-                                            <ImageView
-                                                android:id="@+id/imageView"
-                                                android:layout_width="14dp"
-                                                android:layout_height="14dp"
-                                                android:scaleType="centerCrop"
-                                                android:src="@drawable/ic_nubank" />
-                                        </androidx.cardview.widget.CardView>
-
-
-                                        <TextView
-                                            android:id="@+id/textView3"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginStart="4dp"
-                                            android:text="Nubank"
-                                            android:textSize="14sp"
-                                            app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toEndOf="@+id/cardView"
-                                            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-                                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                            </androidx.cardview.widget.CardView>
-
+                            <TextView
+                                android:id="@+id/textView11"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/balance_revenue_value"
+                                android:textAlignment="viewEnd"
+                                android:textSize="16sp" />
 
                         </LinearLayout>
 
-                    </androidx.core.widget.NestedScrollView>
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                            app:layout_constraintStart_toStartOf="@+id/textView7"
+                            app:layout_constraintTop_toTopOf="@+id/textView6"
+                            app:srcCompat="@drawable/ic_bullet_available" />
 
-                    <TextView
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+                <!-- card pillars -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_pillars"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/white"
+                    app:cardCornerRadius="20dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="20dp"
-                        android:text="Ver mais ..."
-                        android:textColor="@color/clicked"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+                        android:layout_height="match_parent">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        <TextView
+                            android:id="@+id/tv_pillars"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/inter"
+                            android:text="@string/tx_pillars"
+                            android:textSize="14sp"
+                            android:typeface="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/img_filter_pillars"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="12dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_pillars"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_filter" />
+
+                        <!-- Pillar Scroll -->
+                        <HorizontalScrollView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_pillars"
+                            app:layout_constraintVertical_bias="0.0">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:padding="8dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView2"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="1dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="5dp"
+                                    app:cardElevation="1dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/tv_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_food"
+                                            android:textSize="14sp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/img_food"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="8dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_food"
+                                            app:srcCompat="@drawable/img_food_example" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_available_value_food"
+                                            android:layout_width="24dp"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_available_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_available_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_available_value"
+                                            app:srcCompat="@drawable/ic_arrow_available" />
+
+                                        <TextView
+                                            android:id="@+id/tv_available_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_available"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toTopOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_available_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/img_food" />
+
+                                        <TextView
+                                            android:id="@+id/tv_expend_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="4dp"
+                                            android:layout_marginBottom="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_expent"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_expent_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_available_value" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_expent_value_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_expend_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_expend_value"
+                                            app:srcCompat="@drawable/ic_arrow_expent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView2"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="1dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="5dp"
+                                    app:cardElevation="1dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/tv_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_food"
+                                            android:textSize="14sp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/img_food"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="8dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_food"
+                                            app:srcCompat="@drawable/img_food_example" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_available_value_food"
+                                            android:layout_width="24dp"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_available_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_available_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_available_value"
+                                            app:srcCompat="@drawable/ic_arrow_available" />
+
+                                        <TextView
+                                            android:id="@+id/tv_available_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_available"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toTopOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_available_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/img_food" />
+
+                                        <TextView
+                                            android:id="@+id/tv_expend_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="4dp"
+                                            android:layout_marginBottom="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_expent"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_expent_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_available_value" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_expent_value_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_expend_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_expend_value"
+                                            app:srcCompat="@drawable/ic_arrow_expent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView2"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="1dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="5dp"
+                                    app:cardElevation="1dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/tv_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_food"
+                                            android:textSize="14sp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/img_food"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="8dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_food"
+                                            app:srcCompat="@drawable/img_food_example" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_available_value_food"
+                                            android:layout_width="24dp"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_available_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_available_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_available_value"
+                                            app:srcCompat="@drawable/ic_arrow_available" />
+
+                                        <TextView
+                                            android:id="@+id/tv_available_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_available"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toTopOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_available_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/img_food" />
+
+                                        <TextView
+                                            android:id="@+id/tv_expend_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="4dp"
+                                            android:layout_marginBottom="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_expent"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_expent_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_available_value" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_expent_value_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_expend_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_expend_value"
+                                            app:srcCompat="@drawable/ic_arrow_expent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView2"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="1dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="5dp"
+                                    app:cardElevation="1dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/tv_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_food"
+                                            android:textSize="14sp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/img_food"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="8dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_food"
+                                            app:srcCompat="@drawable/img_food_example" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_available_value_food"
+                                            android:layout_width="24dp"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_available_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_available_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_available_value"
+                                            app:srcCompat="@drawable/ic_arrow_available" />
+
+                                        <TextView
+                                            android:id="@+id/tv_available_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_available"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toTopOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_available_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/img_food" />
+
+                                        <TextView
+                                            android:id="@+id/tv_expend_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="4dp"
+                                            android:layout_marginBottom="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_expent"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_expent_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_available_value" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_expent_value_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_expend_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_expend_value"
+                                            app:srcCompat="@drawable/ic_arrow_expent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cardView2"
+                                    android:layout_width="160dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="1dp"
+                                    android:layout_marginTop="1dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginBottom="1dp"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardCornerRadius="5dp"
+                                    app:cardElevation="1dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <TextView
+                                            android:id="@+id/tv_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_food"
+                                            android:textSize="14sp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <ImageView
+                                            android:id="@+id/img_food"
+                                            android:layout_width="0dp"
+                                            android:layout_height="100dp"
+                                            android:layout_marginTop="8dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_food"
+                                            app:srcCompat="@drawable/img_food_example" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_available_value_food"
+                                            android:layout_width="24dp"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_available_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_available_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_available_value"
+                                            app:srcCompat="@drawable/ic_arrow_available" />
+
+                                        <TextView
+                                            android:id="@+id/tv_available_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_available"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toTopOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_available_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/img_food" />
+
+                                        <TextView
+                                            android:id="@+id/tv_expend_value"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="4dp"
+                                            android:layout_marginBottom="8dp"
+                                            android:fontFamily="@font/inter"
+                                            android:text="@string/tx_alimentacao_value_expent"
+                                            android:textSize="12sp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintStart_toEndOf="@+id/iv_status_expent_value_food"
+                                            app:layout_constraintTop_toBottomOf="@+id/tv_available_value" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_status_expent_value_food"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="0dp"
+                                            android:scaleType="centerCrop"
+                                            app:layout_constraintBottom_toBottomOf="@+id/tv_expend_value"
+                                            app:layout_constraintEnd_toStartOf="@+id/tv_expend_value"
+                                            app:layout_constraintHorizontal_bias="0.5"
+                                            app:layout_constraintHorizontal_chainStyle="packed"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="@+id/tv_expend_value"
+                                            app:srcCompat="@drawable/ic_arrow_expent" />
+
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+
+                        </HorizontalScrollView>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+                <!-- card expenses -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_expenses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/white"
+                    app:cardCornerRadius="20dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tv_expenses"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="@font/inter"
+                            android:text="@string/tx_expenses"
+                            android:textSize="14sp"
+                            android:typeface="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/img_filter_expenses"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="12dp"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_expenses"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_filter" />
+
+                        <!-- Expenses RecyclerView -->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewExpenses"
+                            android:layout_width="0dp"
+                            android:layout_height="220dp"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_expenses">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="Ver mais ..."
+                            android:textColor="@color/clicked"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/recyclerViewExpenses" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -646,6 +906,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        app:contentInsetStart="0dp"
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="10dp"
         app:fabCradleVerticalOffset="10dp"
@@ -659,8 +920,9 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
             android:background="@drawable/transparent_background"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
