@@ -7,12 +7,15 @@
     <string name="link_notificacoes">notificações</string>
     <string name="user_name">Fernando Barbosa</string>
     <string name="wellcome">Olá,</string>
-    <string name="tx_balance">balanço geral</string>
+
     <string name="tx_pillars">pilares</string>
+    <string name="txt_pillar_card">alimentação</string>
+    <string name="tx_pillar_value_available">R$ 1.234,99</string>
+    <string name="tx_pillar_value_expend">R$ 1.234,99</string>
+
     <string name="tx_expenses">despesas</string>
-    <string name="tx_food">alimentação</string>
-    <string name="tx_alimentacao_value_available">R$ 1.234,99</string>
-    <string name="tx_alimentacao_value_expent">R$ 1.234,99</string>
+
+    <string name="tx_balance">balanço geral</string>
     <string name="balance_available_description">disponível</string>
     <string name="balance_available_value">R$ 190.234,99</string>
     <string name="balance_expense_description">despesas</string>
@@ -21,4 +24,17 @@
     <string name="balance_revenue_value">R$ 190.234,99</string>
     <string name="balance_investment_description">investimentos</string>
     <string name="balance_investment_value">R$ 190.234,99</string>
+
+    <string name="register_text1">Crie sua conta grátis</string>
+    <string name="register_text2">Já tenho conta</string>
+    <string name="register_button">Cadastre-se</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

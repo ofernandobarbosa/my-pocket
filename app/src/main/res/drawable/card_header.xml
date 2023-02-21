@@ -16,7 +16,7 @@
             android:rotation="90"
             android:scaleX="2"
             android:scaleY="2"
-            android:translateX="1"
+            android:translateX="0"
             android:translateY="0">
 
             <path android:pathData="M0 0V180H360V0">
