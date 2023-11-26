@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">My Pocket</string>
+    <string name="qr_code_description">Qr code</string>
+    <string name="link_inicio">início</string>
+    <string name="link_investimentos">investimentos</string>
+    <string name="link_carteira">carteira</string>
+    <string name="link_notificacoes">notificações</string>
+    <string name="user_name">Fernando Barbosa</string>
+    <string name="wellcome">Olá,</string>
+
+    <string name="tx_pillars">pilares</string>
+    <string name="txt_pillar_card">alimentação</string>
+    <string name="tx_pillar_value_available">R$ 1.234,99</string>
+    <string name="tx_pillar_value_expend">R$ 1.234,99</string>
+
+    <string name="tx_expenses">despesas</string>
+
+    <string name="tx_balance">balanço geral</string>
+    <string name="balance_available_description">disponível</string>
+    <string name="balance_available_value">R$ 190.234,99</string>
+    <string name="balance_expense_description">despesas</string>
+    <string name="balance_expense_value">R$ 190.234,99</string>
+    <string name="balance_revenue_description">receitas</string>
+    <string name="balance_revenue_value">R$ 190.234,99</string>
+    <string name="balance_investment_description">investimentos</string>
+    <string name="balance_investment_value">R$ 190.234,99</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+
+    <string name="onboard_title1">Título 1</string>
+    <string name="onboard_title2">Título 2</string>
+    <string name="onboard_title3">Título 3</string>
+    <string name="onboard_title4">Título 4</string>
+    <string name="onboard_description1">Descrição 1</string>
+    <string name="onboard_description2">Descrição 2</string>
+    <string name="onboard_description3">Descrição 3</string>
+    <string name="onboard_description4">Descrição 4</string>
+    <string name="onboard_register_title">Crie sua conta grátis :)</string>
+    <string name="onboard_register_already_registered">Já tenho conta</string>
+    <string name="onboard_register_button">Cadastre-se</string>
+
+    <string name="register_input_name">Nome completo</string>
+    <string name="register_input_email">Email</string>
+    <string name="register_input_password">Senha</string>
+    <string name="register_button">Enviar</string>
+
+    <string name="onboard_login_title">Acesse seu pocket :)</string>
+
+    <string name="use_terms">Termos de uso.</string>
+    <string name="login_button">Entrar</string>
+    <string name="tx_manual_expense">manual expense</string>
+    <string name="tx_main_button_add">main button add</string>
+
+</resources>
